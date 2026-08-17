@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASTRA | Advanced Systems & Technology Research Alliance</title>
+    <meta
+      name="description"
+      content="ASTRA Lab (Advanced Systems & Technology Research Alliance) — research in autonomous systems, advanced materials, and intelligent manufacturing in Mechanical Engineering."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a365d'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -369,8 +377,8 @@
       }
 
       .research-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-xl);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
         border-color: var(--accent-light);
       }
 
@@ -405,7 +413,6 @@
       }
 
       .research-card:hover .research-icon {
-        transform: scale(1.1) rotate(5deg);
         box-shadow: 0 8px 25px rgba(0, 55, 138, 0.3);
       }
 
@@ -780,9 +787,9 @@
             Advanced Systems & Technology Research Alliance
           </p>
           <p class="hero-description">
-            Pioneering the future of mechanical engineering through cutting-edge
-            research in autonomous systems, advanced materials, and intelligent
-            manufacturing technologies.
+            Research in autonomous systems, advanced materials, and intelligent
+            manufacturing — at the intersection of robotics, materials science,
+            and mechanical design.
           </p>
           <a href="research.html" class="cta-button">
             Explore Research
@@ -890,7 +897,7 @@
     <footer>
       <div class="footer-content">
         <p class="footer-text">
-          © 2025 ASTRA Lab - Advanced Systems & Technology Research Alliance<br />
+          © 2026 ASTRA Lab - Advanced Systems & Technology Research Alliance<br />
           Mechanical Engineering Department | Leading Innovation in Engineering
           Research
         </p>
@@ -943,43 +950,6 @@
           header.style.borderBottom = "1px solid rgba(226, 232, 240, 0.6)";
         }
       });
-
-      // Animate stats numbers
-      const animateStats = () => {
-        const stats = document.querySelectorAll(".stat-number");
-        stats.forEach((stat) => {
-          const target = parseInt(stat.textContent.replace(/[^\d]/g, ""));
-          const suffix = stat.textContent.replace(/[\d.]/g, "");
-          let current = 0;
-          const increment = target / 50;
-          const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-              current = target;
-              clearInterval(timer);
-            }
-            stat.textContent = Math.floor(current) + suffix;
-          }, 30);
-        });
-      };
-
-      // Trigger stats animation when stats section is visible
-      const statsObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              animateStats();
-              statsObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-
-      const statsSection = document.querySelector(".stats");
-      if (statsSection) {
-        statsObserver.observe(statsSection);
-      }
 
       // Mobile navigation toggle
       (function () {
