@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Publications | ASTRA Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #ffffff;
+        --secondary: #f8f9fa;
+        --tertiary: #f1f3f4;
+        --accent: #1a365d;
+        --accent-hover: #2c5282;
+        --accent-light: #e6f3ff;
+        --accent-secondary: #8b1538;
+        --text-primary: #2d3748;
+        --text-secondary: #4a5568;
+        --text-muted: #718096;
+        --text-light: #a0aec0;
+        --surface: #ffffff;
+        --surface-elevated: #f7fafc;
+        --surface-glass: rgba(255, 255, 255, 0.95);
+        --border: #e2e8f0;
+        --border-light: #edf2f7;
+        --gradient: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+        --hero-gradient: linear-gradient(135deg, rgba(26, 54, 93, 0.9) 0%, rgba(44, 82, 130, 0.85) 100%);
+        --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", Georgia, "Times New Roman", serif;
+        background: var(--primary);
+        color: var(--text-primary);
+        line-height: 1.7;
+        overflow-x: hidden;
+        position: relative;
+        font-weight: 400;
+      }
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        z-index: 1000;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.25rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: "Montserrat", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--accent);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+      }
+
+      .logo:hover {
+        color: var(--accent-hover);
+      }
+
+      nav {
+        display: flex;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        letter-spacing: 0.02em;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+        background: var(--surface-elevated);
+      }
+
+      nav a.active {
+        color: var(--accent);
+        background: var(--surface-elevated);
+        font-weight: 600;
+      }
+
+      /* Page Header */
+      .page-header {
+        background: var(--hero-gradient);
+        color: white;
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+        margin-top: 80px;
+      }
+
+      .page-title {
+        font-family: "Montserrat", serif;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-style: italic;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Main Content */
+      .main-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+      }
+
+      .publication-section {
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        font-family: "Montserrat", serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .publication-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s ease;
+      }
+
+      .publication-item:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .pub-title {
+        font-family: "Montserrat", serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+      }
+
+      .pub-authors {
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+      }
+
+      .pub-venue {
+        color: var(--accent);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        font-style: italic;
+      }
+
+      .pub-year {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .pub-links {
+        margin-top: 1rem;
+        display: flex;
+        gap: 1rem;
+      }
+
+      .pub-link {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        padding: 0.25rem 0.75rem;
+        border: 1px solid var(--accent);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+
+      .pub-link:hover {
+        background: var(--accent);
+        color: white;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--accent);
+        color: white;
+        padding: 3rem 2rem 2rem;
+        text-align: center;
+        margin-top: 6rem;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-text {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        font-weight: 400;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav {
+          gap: 1rem;
+        }
+        
+        .main-content {
+          padding: 4rem 1rem;
+        }
+        
+        .pub-links {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <a href="./" class="logo">ASTRA</a>
+        <nav>
+          <a href="./">Home</a>
+          <a href="./research">Research</a>
+          <a href="./publications" class="active">Publications</a>
+          <a href="./people">People</a>
+          <a href="./gallery">Gallery</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="page-header">
+      <h1 class="page-title">Publications</h1>
+      <p class="page-subtitle">
+        Research contributions to the scientific community through peer-reviewed publications
+      </p>
+    </section>
+
+    <main class="main-content">
+      <div class="publication-section">
+        <h2 class="section-title">Journal Papers</h2>
+        
+        <div class="publication-item">
+          <h3 class="pub-title">
+            Adaptive Control Strategies for Autonomous Manufacturing Systems: A Machine Learning Approach
+          </h3>
+          <div class="pub-authors">
+            J. Smith, M. Johnson, A. Chen, R. Williams
+          </div>
+          <div class="pub-venue">
+            Journal of Manufacturing Science and Engineering
+          </div>
+          <div class="pub-year">2024</div>
+          <div class="pub-links">
+            <a href="#" class="pub-link">PDF</a>
+            <a href="#" class="pub-link">DOI</a>
+            <a href="#" class="pub-link">BibTeX</a>
+          </div>
+        </div>
+
+        <div class="publication-item">
+          <h3 class="pub-title">
+            Smart Materials Integration in Aerospace Structures: Performance Analysis and Optimization
+          </h3>
+          <div class="pub-authors">
+            A. Chen, J. Smith, K. Davis, L. Thompson
+          </div>
+          <div class="pub-venue">
+            Composites Science and Technology
+          </div>
+          <div class="pub-year">2024</div>
+          <div class="pub-links">
+            <a href="#" class="pub-link">PDF</a>
+            <a href="#" class="pub-link">DOI</a>
+            <a href="#" class="pub-link">BibTeX</a>
+          </div>
+        </div>
+
+        <div class="publication-item">
+          <h3 class="pub-title">
+            Energy Harvesting Mechanisms in Sustainable Manufacturing: A Comprehensive Review
+          </h3>
+          <div class="pub-authors">
+            R. Williams, J. Smith, P. Anderson, M. Johnson
+          </div>
+          <div class="pub-venue">
+            Renewable and Sustainable Energy Reviews
+          </div>
+          <div class="pub-year">2023</div>
+          <div class="pub-links">
+            <a href="#" class="pub-link">PDF</a>
+            <a href="#" class="pub-link">DOI</a>
+            <a href="#" class="pub-link">BibTeX</a>
+          </div>
+        </div>
+
+        <div class="publication-item">
+          <h3 class="pub-title">
+            Human-Robot Collaboration in Industrial Settings: Safety Protocols and Performance Metrics
+          </h3>
+          <div class="pub-authors">
+            M. Johnson, J. Smith, S. Brown, A. Chen
+          </div>
+          <div class="pub-venue">
+            IEEE Transactions on Robotics
+          </div>
+          <div class="pub-year">2023</div>
+          <div class="pub-links">
+            <a href="#" class="pub-link">PDF</a>
+            <a href="#" class="pub-link">DOI</a>
+            <a href="#" class="pub-link">BibTeX</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="publication-section">
+        <h2 class="section-title">Conference Papers</h2>
+        
+        <div class="publication-item">
+          <h3 class="pub-title">
+            Real-Time Optimization of Robotic Manufacturing Processes Using Deep Reinforcement Learning
+          </h3>
+          <div class="pub-authors">
+            K. Davis, J. Smith, A. Chen
+          </div>
+          <div class="pub-venue">
+            IEEE International Conference on Robotics and Automation (ICRA)
+          </div>
+          <div class="pub-year">2024</div>
+          <div class="pub-links">
+            <a href="#" class="pub-link">PDF</a>
+            <a href="#" class="pub-link">DOI</a>
+            <a href="#" class="pub-link">BibTeX</a>
+          </div>
+        </div>
+
+        <div class="publication-item">
+          <h3 class="pub-title">
+            Metamaterial Design for Adaptive Aerospace Structures: Computational Methods and Validation
+          </h3>
+          <div class="pub-authors">
+            L. Thompson, A. Chen, J. Smith
+          </div>
+          <div class="pub-venue">
+            AIAA SciTech Forum
+          </div>
+          <div class="pub-year">2024</div>
+          <div class="pub-links">
+            <a href="#" class="pub-link">PDF</a>
+            <a href="#" class="pub-link">DOI</a>
+            <a href="#" class="pub-link">BibTeX</a>
+          </div>
+        </div>
+
+        <div class="publication-item">
+          <h3 class="pub-title">
+            Predictive Maintenance in Smart Manufacturing: A Data-Driven Approach
+          </h3>
+          <div class="pub-authors">
+            P. Anderson, R. Williams, J. Smith
+          </div>
+          <div class="pub-venue">
+            International Conference on Manufacturing Technology (ICMT)
+          </div>
+          <div class="pub-year">2023</div>
+          <div class="pub-links">
+            <a href="#" class="pub-link">PDF</a>
+            <a href="#" class="pub-link">DOI</a>
+            <a href="#" class="pub-link">BibTeX</a>
+          </div>
+        </div>
+
+        <div class="publication-item">
+          <h3 class="pub-title">
+            Sustainable Energy Integration in Industrial Automation Systems
+          </h3>
+          <div class="pub-authors">
+            S. Brown, M. Johnson, J. Smith
+          </div>
+          <div class="pub-venue">
+            International Conference on Sustainable Energy Engineering (ICSEE)
+          </div>
+          <div class="pub-year">2023</div>
+          <div class="pub-links">
+            <a href="#" class="pub-link">PDF</a>
+            <a href="#" class="pub-link">DOI</a>
+            <a href="#" class="pub-link">BibTeX</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p class="footer-text">
+          © 2025 ASTRA Lab - Advanced Systems & Technology Research Alliance<br />
+          Mechanical Engineering Department | Leading Innovation in Engineering Research
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

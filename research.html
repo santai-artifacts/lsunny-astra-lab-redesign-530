@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research | ASTRA Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #ffffff;
+        --secondary: #f8f9fa;
+        --tertiary: #f1f3f4;
+        --accent: #1a365d;
+        --accent-hover: #2c5282;
+        --accent-light: #e6f3ff;
+        --accent-secondary: #8b1538;
+        --text-primary: #2d3748;
+        --text-secondary: #4a5568;
+        --text-muted: #718096;
+        --text-light: #a0aec0;
+        --surface: #ffffff;
+        --surface-elevated: #f7fafc;
+        --surface-glass: rgba(255, 255, 255, 0.95);
+        --border: #e2e8f0;
+        --border-light: #edf2f7;
+        --gradient: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+        --hero-gradient: linear-gradient(135deg, rgba(26, 54, 93, 0.9) 0%, rgba(44, 82, 130, 0.85) 100%);
+        --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", Georgia, "Times New Roman", serif;
+        background: var(--primary);
+        color: var(--text-primary);
+        line-height: 1.7;
+        overflow-x: hidden;
+        position: relative;
+        font-weight: 400;
+      }
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        z-index: 1000;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.25rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: "Montserrat", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--accent);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+      }
+
+      .logo:hover {
+        color: var(--accent-hover);
+      }
+
+      nav {
+        display: flex;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        letter-spacing: 0.02em;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+        background: var(--surface-elevated);
+      }
+
+      nav a.active {
+        color: var(--accent);
+        background: var(--surface-elevated);
+        font-weight: 600;
+      }
+
+      /* Page Header */
+      .page-header {
+        background: var(--hero-gradient);
+        color: white;
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+        margin-top: 80px;
+      }
+
+      .page-title {
+        font-family: "Montserrat", serif;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-style: italic;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Main Content */
+      .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+      }
+
+      .research-project {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 2.5rem;
+        margin-bottom: 3rem;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s ease;
+      }
+
+      .research-project:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .project-header {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .project-info h3 {
+        font-family: "Montserrat", serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        letter-spacing: 0.01em;
+      }
+
+      .project-meta {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .project-image {
+        width: 100%;
+        height: 200px;
+        background: var(--secondary);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-style: italic;
+      }
+
+      .project-description {
+        color: var(--text-secondary);
+        line-height: 1.7;
+        font-size: 1rem;
+      }
+
+      .project-tags {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tag {
+        background: var(--accent-light);
+        color: var(--accent);
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--accent);
+        color: white;
+        padding: 3rem 2rem 2rem;
+        text-align: center;
+        margin-top: 6rem;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-text {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        font-weight: 400;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .project-header {
+          grid-template-columns: 1fr;
+        }
+        
+        .project-image {
+          height: 150px;
+        }
+        
+        nav {
+          gap: 1rem;
+        }
+        
+        .main-content {
+          padding: 4rem 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <a href="./" class="logo">ASTRA</a>
+        <nav>
+          <a href="./">Home</a>
+          <a href="./research" class="active">Research</a>
+          <a href="./publications">Publications</a>
+          <a href="./people">People</a>
+          <a href="./gallery">Gallery</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="page-header">
+      <h1 class="page-title">Current Research</h1>
+      <p class="page-subtitle">
+        Exploring the frontiers of mechanical engineering through innovative research projects
+      </p>
+    </section>
+
+    <main class="main-content">
+      <div class="research-project">
+        <div class="project-header">
+          <div class="project-info">
+            <h3>Autonomous Robotic Systems for Manufacturing</h3>
+            <div class="project-meta">Ongoing • 2023-2026 • NSF Funded</div>
+          </div>
+          <div class="project-image">
+            [Research Image Placeholder]
+          </div>
+        </div>
+        <div class="project-description">
+          <p>
+            This project focuses on developing next-generation autonomous robotic systems capable of 
+            adaptive manufacturing processes. Our research integrates advanced control algorithms, 
+            machine learning techniques, and real-time sensor feedback to create robots that can 
+            autonomously adjust their operations based on changing manufacturing conditions and requirements.
+          </p>
+          <p>
+            Key innovations include predictive maintenance algorithms, collaborative human-robot 
+            interfaces, and adaptive quality control systems that ensure consistent production 
+            quality while maximizing efficiency and safety in industrial environments.
+          </p>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Robotics</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Manufacturing</span>
+          <span class="tag">Control Systems</span>
+        </div>
+      </div>
+
+      <div class="research-project">
+        <div class="project-header">
+          <div class="project-info">
+            <h3>Smart Materials for Aerospace Applications</h3>
+            <div class="project-meta">Ongoing • 2024-2027 • NASA Collaboration</div>
+          </div>
+          <div class="project-image">
+            [Research Image Placeholder]
+          </div>
+        </div>
+        <div class="project-description">
+          <p>
+            Investigation of programmable materials and metamaterials with tunable mechanical 
+            properties for aerospace applications. This research explores shape-memory alloys, 
+            piezoelectric composites, and bio-inspired materials that can adapt their properties 
+            in response to environmental conditions.
+          </p>
+          <p>
+            Applications include morphing wing structures, adaptive thermal protection systems, 
+            and lightweight structural components that can optimize performance across different 
+            flight conditions while maintaining structural integrity and safety standards.
+          </p>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Smart Materials</span>
+          <span class="tag">Aerospace</span>
+          <span class="tag">Metamaterials</span>
+          <span class="tag">Composites</span>
+        </div>
+      </div>
+
+      <div class="research-project">
+        <div class="project-header">
+          <div class="project-info">
+            <h3>Sustainable Energy Systems Integration</h3>
+            <div class="project-meta">Ongoing • 2023-2025 • DOE Grant</div>
+          </div>
+          <div class="project-image">
+            [Research Image Placeholder]
+          </div>
+        </div>
+        <div class="project-description">
+          <p>
+            Development of integrated sustainable energy systems that combine renewable energy 
+            sources with advanced storage and distribution technologies. Our research focuses on 
+            optimizing the mechanical design of wind turbines, solar tracking systems, and 
+            energy storage mechanisms for maximum efficiency and reliability.
+          </p>
+          <p>
+            The project includes novel approaches to mechanical energy harvesting, advanced 
+            materials for energy storage systems, and intelligent control systems that can 
+            predict and adapt to changing energy demands and environmental conditions.
+          </p>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Renewable Energy</span>
+          <span class="tag">Sustainability</span>
+          <span class="tag">Energy Storage</span>
+          <span class="tag">System Integration</span>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p class="footer-text">
+          © 2025 ASTRA Lab - Advanced Systems & Technology Research Alliance<br />
+          Mechanical Engineering Department | Leading Innovation in Engineering Research
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

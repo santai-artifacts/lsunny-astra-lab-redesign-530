@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>People | ASTRA Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #ffffff;
+        --secondary: #f8f9fa;
+        --tertiary: #f1f3f4;
+        --accent: #1a365d;
+        --accent-hover: #2c5282;
+        --accent-light: #e6f3ff;
+        --accent-secondary: #8b1538;
+        --text-primary: #2d3748;
+        --text-secondary: #4a5568;
+        --text-muted: #718096;
+        --text-light: #a0aec0;
+        --surface: #ffffff;
+        --surface-elevated: #f7fafc;
+        --surface-glass: rgba(255, 255, 255, 0.95);
+        --border: #e2e8f0;
+        --border-light: #edf2f7;
+        --gradient: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+        --hero-gradient: linear-gradient(135deg, rgba(26, 54, 93, 0.9) 0%, rgba(44, 82, 130, 0.85) 100%);
+        --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", Georgia, "Times New Roman", serif;
+        background: var(--primary);
+        color: var(--text-primary);
+        line-height: 1.7;
+        overflow-x: hidden;
+        position: relative;
+        font-weight: 400;
+      }
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        z-index: 1000;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.25rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: "Montserrat", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--accent);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+      }
+
+      .logo:hover {
+        color: var(--accent-hover);
+      }
+
+      nav {
+        display: flex;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        letter-spacing: 0.02em;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+        background: var(--surface-elevated);
+      }
+
+      nav a.active {
+        color: var(--accent);
+        background: var(--surface-elevated);
+        font-weight: 600;
+      }
+
+      /* Page Header */
+      .page-header {
+        background: var(--hero-gradient);
+        color: white;
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+        margin-top: 80px;
+      }
+
+      .page-title {
+        font-family: "Montserrat", serif;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-style: italic;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Main Content */
+      .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+      }
+
+      .people-section {
+        margin-bottom: 5rem;
+      }
+
+      .section-title {
+        font-family: "Montserrat", serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 3rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .people-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .person-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s ease;
+      }
+
+      .person-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .person-photo {
+        width: 150px;
+        height: 150px;
+        background: var(--secondary);
+        border-radius: 50%;
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-style: italic;
+        font-size: 0.9rem;
+      }
+
+      .person-name {
+        font-family: "Montserrat", serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .person-title {
+        color: var(--accent);
+        font-weight: 500;
+        margin-bottom: 1rem;
+        font-style: italic;
+      }
+
+      .person-bio {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .person-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .person-contact a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .person-contact a:hover {
+        text-decoration: underline;
+      }
+
+      .faculty-card {
+        grid-column: 1 / -1;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: left;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      .faculty-card .person-photo {
+        width: 200px;
+        height: 200px;
+        margin: 0;
+      }
+
+      .faculty-info {
+        padding-top: 1rem;
+      }
+
+      .faculty-card .person-name {
+        font-size: 1.8rem;
+        text-align: left;
+      }
+
+      .faculty-card .person-title {
+        font-size: 1.1rem;
+        text-align: left;
+      }
+
+      .faculty-card .person-bio {
+        font-size: 1rem;
+        text-align: left;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--accent);
+        color: white;
+        padding: 3rem 2rem 2rem;
+        text-align: center;
+        margin-top: 6rem;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-text {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        font-weight: 400;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav {
+          gap: 1rem;
+        }
+        
+        .main-content {
+          padding: 4rem 1rem;
+        }
+        
+        .faculty-card {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        
+        .faculty-card .person-photo {
+          margin: 0 auto;
+        }
+        
+        .faculty-card .person-name,
+        .faculty-card .person-title,
+        .faculty-card .person-bio {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <a href="./" class="logo">ASTRA</a>
+        <nav>
+          <a href="./">Home</a>
+          <a href="./research">Research</a>
+          <a href="./publications">Publications</a>
+          <a href="./people" class="active">People</a>
+          <a href="./gallery">Gallery</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="page-header">
+      <h1 class="page-title">Our Team</h1>
+      <p class="page-subtitle">
+        Meet the researchers and scholars driving innovation in mechanical engineering
+      </p>
+    </section>
+
+    <main class="main-content">
+      <div class="people-section">
+        <h2 class="section-title">Faculty</h2>
+        <div class="people-grid">
+          <div class="person-card faculty-card">
+            <div class="person-photo">
+              [Faculty Photo]
+            </div>
+            <div class="faculty-info">
+              <h3 class="person-name">Dr. [Your Name]</h3>
+              <div class="person-title">Principal Investigator & Lab Director</div>
+              <div class="person-bio">
+                Dr. [Your Name] is an Associate Professor of Mechanical Engineering with expertise in 
+                autonomous systems, smart materials, and sustainable manufacturing. With over 15 years 
+                of research experience, Dr. [Your Name] has published extensively in top-tier journals 
+                and conferences, focusing on the intersection of robotics, materials science, and 
+                environmental sustainability. Prior to joining the university, Dr. [Your Name] worked 
+                in industry developing advanced manufacturing systems for aerospace applications.
+              </div>
+              <div class="person-contact">
+                <span>📧 [your.email]@university.edu</span>
+                <span>📞 (555) 123-4567</span>
+                <span>🏢 Engineering Building, Room 123</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="people-section">
+        <h2 class="section-title">Current Students</h2>
+        <div class="people-grid">
+          <div class="person-card">
+            <div class="person-photo">
+              [Student Photo]
+            </div>
+            <h3 class="person-name">Sarah Chen</h3>
+            <div class="person-title">PhD Student</div>
+            <div class="person-bio">
+              Research focus: Autonomous robotic systems for manufacturing applications. 
+              Sarah is developing machine learning algorithms for adaptive control in 
+              industrial robotics.
+            </div>
+            <div class="person-contact">
+              <a href="mailto:s.chen@university.edu">s.chen@university.edu</a>
+            </div>
+          </div>
+
+          <div class="person-card">
+            <div class="person-photo">
+              [Student Photo]
+            </div>
+            <h3 class="person-name">Michael Rodriguez</h3>
+            <div class="person-title">PhD Student</div>
+            <div class="person-bio">
+              Research focus: Smart materials and metamaterials for aerospace applications. 
+              Michael is investigating programmable materials with tunable mechanical properties.
+            </div>
+            <div class="person-contact">
+              <a href="mailto:m.rodriguez@university.edu">m.rodriguez@university.edu</a>
+            </div>
+          </div>
+
+          <div class="person-card">
+            <div class="person-photo">
+              [Student Photo]
+            </div>
+            <h3 class="person-name">Emily Johnson</h3>
+            <div class="person-title">MS Student</div>
+            <div class="person-bio">
+              Research focus: Sustainable energy systems integration. Emily is working on 
+              optimizing renewable energy harvesting mechanisms for industrial applications.
+            </div>
+            <div class="person-contact">
+              <a href="mailto:e.johnson@university.edu">e.johnson@university.edu</a>
+            </div>
+          </div>
+
+          <div class="person-card">
+            <div class="person-photo">
+              [Student Photo]
+            </div>
+            <h3 class="person-name">David Kim</h3>
+            <div class="person-title">MS Student</div>
+            <div class="person-bio">
+              Research focus: Human-robot collaboration and safety systems. David is developing 
+              intuitive interfaces for collaborative manufacturing environments.
+            </div>
+            <div class="person-contact">
+              <a href="mailto:d.kim@university.edu">d.kim@university.edu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="people-section">
+        <h2 class="section-title">Alumni</h2>
+        <div class="people-grid">
+          <div class="person-card">
+            <div class="person-photo">
+              [Alumni Photo]
+            </div>
+            <h3 class="person-name">Dr. Jennifer Liu</h3>
+            <div class="person-title">PhD 2023</div>
+            <div class="person-bio">
+              Current Position: Senior Research Engineer at Tesla<br>
+              Thesis: "Advanced Control Systems for Autonomous Manufacturing"
+            </div>
+          </div>
+
+          <div class="person-card">
+            <div class="person-photo">
+              [Alumni Photo]
+            </div>
+            <h3 class="person-name">Dr. Robert Thompson</h3>
+            <div class="person-title">PhD 2022</div>
+            <div class="person-bio">
+              Current Position: Assistant Professor at MIT<br>
+              Thesis: "Smart Materials for Adaptive Aerospace Structures"
+            </div>
+          </div>
+
+          <div class="person-card">
+            <div class="person-photo">
+              [Alumni Photo]
+            </div>
+            <h3 class="person-name">Maria Gonzalez</h3>
+            <div class="person-title">MS 2023</div>
+            <div class="person-bio">
+              Current Position: Design Engineer at SpaceX<br>
+              Thesis: "Optimization of Renewable Energy Systems"
+            </div>
+          </div>
+
+          <div class="person-card">
+            <div class="person-photo">
+              [Alumni Photo]
+            </div>
+            <h3 class="person-name">James Wilson</h3>
+            <div class="person-title">MS 2022</div>
+            <div class="person-bio">
+              Current Position: Robotics Engineer at Boston Dynamics<br>
+              Thesis: "Human-Robot Interaction in Manufacturing"
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p class="footer-text">
+          © 2025 ASTRA Lab - Advanced Systems & Technology Research Alliance<br />
+          Mechanical Engineering Department | Leading Innovation in Engineering Research
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
